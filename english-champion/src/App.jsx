@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from "react";
 // ============================================================
 const C = {
   gold: "#C9A84C",
-  goldLight: "#E...  {
+  goldLight: "#F4E4A1"
+};
     id: "fill", title: "Fill in the Blank", titleTh: "เติมคำในช่องว่าง", icon: "✏️",
     questions: [
       { sentence: "The _____ dog ran quickly.", blank: "big", options: ["big", "run", "quickly", "and"], hint: "What describes the dog?", hintTh: "อะไรขยายหมา?" },
