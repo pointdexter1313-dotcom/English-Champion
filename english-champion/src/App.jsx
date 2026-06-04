@@ -4,64 +4,8 @@ import { useState, useEffect, useRef } from "react";
 // THAI COLOR PALETTE
 // ============================================================
 const C = {
-  gold: "#C9A84C", goldLight: "#E8C96D", goldDark: "#8B6914",
-  crimson: "#8B1A1A", emerald: "#1A5C38", sapphire: "#1A2E6B",
-  ivory: "#FAF3E0", ivoryDark: "#F0E6C8",
-  inkDark: "#1A1208", inkMid: "#2D2010",
-  glow: "rgba(201,168,76,0.35)",
-};
-
-const neu = {
-  card: { background: C.ivory, borderRadius: 24, boxShadow: `6px 6px 16px rgba(0,0,0,0.18), -4px -4px 12px rgba(255,255,255,0.85)`, border: `1px solid rgba(201,168,76,0.2)` },
-  button: { background: `linear-gradient(145deg, ${C.goldLight}, ${C.gold})`, borderRadius: 16, boxShadow: `4px 4px 12px rgba(0,0,0,0.25), -2px -2px 8px rgba(255,255,255,0.6)`, border: "none", cursor: "pointer", color: C.inkDark, fontWeight: "bold", transition: "all 0.2s" },
-  inset: { background: `linear-gradient(145deg, ${C.ivoryDark}, ${C.ivory})`, borderRadius: 14, boxShadow: `inset 3px 3px 8px rgba(0,0,0,0.15), inset -2px -2px 6px rgba(255,255,255,0.8)`, border: `1px solid rgba(201,168,76,0.15)` },
-};
-
-const BG = `linear-gradient(160deg, ${C.inkDark} 0%, ${C.inkMid} 60%, #3d2800 100%)`;
-
-const LaiThai = () => (
-  <svg width="0" height="0" style={{position:"absolute"}}>
-    <defs>
-      <pattern id="lt" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-        <path d="M40 5 L75 40 L40 75 L5 40 Z" fill="none" stroke="rgba(201,168,76,0.1)" strokeWidth="1"/>
-        <circle cx="40" cy="40" r="12" fill="none" stroke="rgba(201,168,76,0.07)" strokeWidth="1"/>
-        <circle cx="40" cy="5" r="3" fill="rgba(201,168,76,0.07)"/>
-        <circle cx="75" cy="40" r="3" fill="rgba(201,168,76,0.07)"/>
-        <circle cx="40" cy="75" r="3" fill="rgba(201,168,76,0.07)"/>
-        <circle cx="5" cy="40" r="3" fill="rgba(201,168,76,0.07)"/>
-      </pattern>
-    </defs>
-  </svg>
-);
-
-const partsOfSpeech = [
-  { id: "noun", name: "Noun", thai: "คำนาม", color: "#C9A84C", emoji: "🧍", desc: "Names things, people, places, ideas", descTh: "ชื่อคน สัตว์ สิ่งของ สถานที่", examples: ["dog 🐕", "school 🏫", "Bangkok 🌆", "idea 💡"] },
-  { id: "pronoun", name: "Pronoun", thai: "คำสรรพนาม", color: "#C97BA8", emoji: "👤", desc: "Replaces a noun", descTh: "ใช้แทนคำนาม", examples: ["I", "he", "she", "they", "mine"] },
-  { id: "adjective", name: "Adjective", thai: "คำคุณศัพท์", color: "#9C6BC9", emoji: "🌟", desc: "Describes a noun", descTh: "ขยายคำนาม", examples: ["pretty 🌸", "big 🐘", "cold 🧊", "happy 😊"] },
-  { id: "verb", name: "Verb", thai: "คำกริยา", color: "#4CAF50", emoji: "⚡", desc: "Shows actions", descTh: "แสดงการกระทำ", examples: ["run 🏃", "eat 🍜", "play ⚽", "swim 🏊"] },
-  { id: "adverb", name: "Adverb", thai: "คำวิเศษณ์", color: "#2196F3", emoji: "💨", desc: "Describes verbs", descTh: "ขยายคำกริยา", examples: ["quickly ⚡", "softly 🌸", "well ✅", "always ♾️"] },
-  { id: "preposition", name: "Preposition", thai: "คำบุพบท", color: "#FF9800", emoji: "📍", desc: "Shows relationship", descTh: "แสดงความสัมพันธ์", examples: ["in 📦", "on 🔝", "under 👇", "between ↔️"] },
-  { id: "conjunction", name: "Conjunction", thai: "คำสันธาน", color: "#F44336", emoji: "🔗", desc: "Connects sentences", descTh: "เชื่อมประโยค", examples: ["and", "but", "because", "while"] },
-  { id: "interjection", name: "Interjection", thai: "คำอุทาน", color: "#E91E63", emoji: "😲", desc: "Expresses emotion", descTh: "แสดงความรู้สึก", examples: ["Wow! 😮", "Oops! 😅", "Yay! 🎉", "Oh no! 😱"] },
-];
-
-const worksheets = [
-  {
-    id: "match", title: "Word Sort", titleTh: "จัดประเภทคำ", icon: "🔀",
-    instructions: "Drag each word to its correct category",
-    instructionsTh: "ลากแต่ละคำไปยังประเภทที่ถูกต้อง",
-    words: [
-      { word: "beautiful", answer: "adjective" },
-      { word: "quickly", answer: "adverb" },
-      { word: "Bangkok", answer: "noun" },
-      { word: "run", answer: "verb" },
-      { word: "she", answer: "pronoun" },
-      { word: "and", answer: "conjunction" },
-      { word: "Wow!", answer: "interjection" },
-      { word: "under", answer: "preposition" },
-    ]
-  },
-  {
+  gold: "#C9A84C",
+  goldLight: "#E...  {
     id: "fill", title: "Fill in the Blank", titleTh: "เติมคำในช่องว่าง", icon: "✏️",
     questions: [
       { sentence: "The _____ dog ran quickly.", blank: "big", options: ["big", "run", "quickly", "and"], hint: "What describes the dog?", hintTh: "อะไรขยายหมา?" },
