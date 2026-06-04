@@ -1,4 +1,4 @@
-mport { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // ============================================================
 // THAI COLOR PALETTE
